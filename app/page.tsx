@@ -27,23 +27,25 @@ export default function Home() {
 
     return (
         <main className="min-h-screen max-w-screen-xl p-16">
-            <Tabs onSelectionChange={changeSelection} selectedKey={selected}>
-                <Tab key="viewer" title="View">
-                    <Viewer object={obj} />
-                </Tab>
-                <Tab key="text" title="Text">
-                    <Card>
-                        <CardBody>
-                            <Input
-                                label="JSON Object"
-                                placeholder=""
-                                value={data}
-                                onValueChange={setData}
-                            />
-                        </CardBody>
-                    </Card>  
-                </Tab>
-            </Tabs>
+            <div>
+                <Tabs onSelectionChange={changeSelection} selectedKey={selected}>
+                    <Tab key="viewer" title="View">
+                        <Viewer object={obj} />
+                    </Tab>
+                    <Tab key="text" title="Text">
+                        <Card>
+                            <CardBody>
+                                <Input
+                                    label="JSON Object"
+                                    placeholder=""
+                                    value={data}
+                                    onValueChange={setData}
+                                />
+                            </CardBody>
+                        </Card>  
+                    </Tab>
+                </Tabs>
+            </div>
         </main>
     );
 }

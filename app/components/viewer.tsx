@@ -1,5 +1,8 @@
-import { Fragment } from "react";
 import { Accordion, AccordionItem, Card, CardBody } from "@nextui-org/react";
+
+const itemClasses = {
+    title: "text-xs"
+}
 
 export default function Viewer(props: {object: any}) {
 
@@ -7,20 +10,35 @@ export default function Viewer(props: {object: any}) {
         return Object.entries(data).map(([key, value]) => (
             <AccordionItem key={key} title={key}>
                 {typeof value === 'object' && value !== null ? (
-                    <Accordion isCompact >{renderAccordionItems(value)}</Accordion>
+                    <Accordion itemClasses={itemClasses} isCompact>{renderAccordionItems(value)}</Accordion>
                 ) : (
-                    <Fragment>{String(value)}</Fragment>
+                    <p className="pl-2 text-xs">{String(value)}</p>
                 )}
             </AccordionItem>
         ));
     }
 
+    function renderAccordion(data: any) {
+        return Object.entries(data).map(([key, value]) => {
+            switch(typeof value) {
+                case "object":
+                    return (
+                        <Accordion itemClasses={itemClasses} isCompact>
+                            <AccordionItem key={key} title={key}>
+                                {renderAccordion(value)}
+                            </AccordionItem>
+                        </Accordion>
+                    )
+                default:
+                    return <span className="text-xs pl-2">{key + ": " + String(value)}</span>
+            }
+        });
+    }
+
     return (
         <Card>
             <CardBody>
-                <Accordion isCompact>
-                    {renderAccordionItems(props.object)}
-                </Accordion>
+            {renderAccordion(props.object)}
             </CardBody>
         </Card>  
     )
