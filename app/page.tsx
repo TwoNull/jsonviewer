@@ -1,6 +1,7 @@
 "use client"
 
 import JSON5 from 'json5'
+import { VscJson } from "react-icons/vsc";
 import { useState, Key } from "react";
 import { Tabs, Tab, Card, CardBody, Input } from "@nextui-org/react";
 import Viewer from "./components/viewer";
@@ -25,7 +26,7 @@ export default function Home() {
     }
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="min-h-screen max-w-screen-xl p-16">
             <Tabs onSelectionChange={changeSelection} selectedKey={selected}>
                 <Tab key="viewer" title="View">
                     <Viewer object={obj} />
