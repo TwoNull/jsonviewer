@@ -6,31 +6,22 @@ const itemClasses = {
 
 export default function Viewer(props: {object: any}) {
 
-    function renderAccordionItems(data: any) {
-        return Object.entries(data).map(([key, value]) => (
-            <AccordionItem key={key} title={key}>
-                {typeof value === 'object' && value !== null ? (
-                    <Accordion itemClasses={itemClasses} isCompact>{renderAccordionItems(value)}</Accordion>
-                ) : (
-                    <p className="pl-2 text-xs">{String(value)}</p>
-                )}
-            </AccordionItem>
-        ));
-    }
-
     function renderAccordion(data: any) {
         return Object.entries(data).map(([key, value]) => {
             switch(typeof value) {
                 case "object":
                     return (
-                        <Accordion itemClasses={itemClasses} isCompact>
+                        <Accordion className="" itemClasses={itemClasses} isCompact>
                             <AccordionItem key={key} title={key}>
-                                {renderAccordion(value)}
+                                <div className="flex flex-row gap-2">
+                                    <div className="border-[0.5px] border-neutral-400"/>
+                                    {renderAccordion(value)}
+                                </div>
                             </AccordionItem>
                         </Accordion>
                     )
                 default:
-                    return <span className="text-xs pl-2">{key + ": " + String(value)}</span>
+                    return <span className="text-xs">{key + ": " + String(value)}</span>
             }
         });
     }
@@ -38,7 +29,7 @@ export default function Viewer(props: {object: any}) {
     return (
         <Card>
             <CardBody>
-            {renderAccordion(props.object)}
+                {renderAccordion(props.object)}
             </CardBody>
         </Card>  
     )
