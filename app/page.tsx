@@ -1,7 +1,6 @@
 "use client"
 
 import JSON5 from 'json5'
-import { VscJson } from "react-icons/vsc";
 import { useState, Key } from "react";
 import { Tabs, Tab, Card, CardBody, Input } from "@nextui-org/react";
 import Viewer from "./components/viewer";
