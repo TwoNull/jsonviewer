@@ -2,7 +2,7 @@
 
 import JSON5 from 'json5'
 import { useState, Key } from "react";
-import { Tabs, Tab, Card, CardBody, Input } from "@nextui-org/react";
+import { Tabs, Tab, Card, CardBody, Textarea } from "@nextui-org/react";
 import Viewer from "./components/viewer";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen max-w-screen-xl p-16">
+        <main className="min-h-screen mx-auto max-w-screen-xl p-16">
             <div>
                 <Tabs onSelectionChange={changeSelection} selectedKey={selected}>
                     <Tab key="viewer" title="View">
@@ -34,11 +34,13 @@ export default function Home() {
                     <Tab key="text" title="Text">
                         <Card>
                             <CardBody>
-                                <Input
+                                <Textarea
                                     label="JSON Object"
-                                    placeholder=""
                                     value={data}
                                     onValueChange={setData}
+                                    fullWidth
+                                    disableAutosize
+                                    rows={20}
                                 />
                             </CardBody>
                         </Card>  
