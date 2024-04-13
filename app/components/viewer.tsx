@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Card, CardBody } from "@nextui-org/react";
 import { GoNoEntry, GoQuestion } from "react-icons/go";
-import { VscJson, VscSymbolArray, VscSymbolBoolean, VscSymbolKey, VscSymbolNumeric } from "react-icons/vsc";
+import { VscSymbolBoolean, VscSymbolKey, VscSymbolNumeric } from "react-icons/vsc";
+import { ArrayIndicator, ObjectIndicator } from "./indicators";
 
 
 const itemClasses = {
@@ -14,16 +15,16 @@ export default function Viewer(props: {object: any}) {
                 case "object":
                     const objectType = Object.prototype.toString.call(value)
                     if (objectType === '[object Null]') {
-                        return <span className="flex items-center gap-1 text-xs"><GoNoEntry />{key + ":"}<span>null</span></span>
+                        return <span className="p-2 flex items-center gap-2 text-xs"><GoNoEntry className="text-default-400" size="16" />{key + ":"}<span>null</span></span>
                     }
                     if (objectType === '[object Undefined]') {
-                        return <span className="flex items-center gap-1 text-xs"><GoQuestion />{key + ":"}<span>undefined</span></span>
+                        return <span className="p-2 flex items-center gap-2 text-xs"><GoQuestion className="text-default-400" size="16" />{key + ":"}<span>undefined</span></span>
                     }
                     if (objectType === '[object Object]') {
                         return (
                             <Accordion itemClasses={itemClasses} isCompact>
-                                <AccordionItem key={key} title={key} startContent={<VscJson />}>
-                                    <div className="flex flex-row gap-2">
+                                <AccordionItem key={key} title={key} classNames={{"trigger": "flex-row-reverse gap-2", "content": "p-0"}} indicator={({isOpen}) => <ObjectIndicator isOpen={isOpen} />} disableIndicatorAnimation>
+                                    <div className="flex flex-row gap-2 px-[7px]">
                                         <div className="border-[0.5px] border-neutral-400"/>
                                         <div>
                                             {renderAccordion(value)}
@@ -36,8 +37,8 @@ export default function Viewer(props: {object: any}) {
                     if (objectType === '[object Array]') {
                         return (
                             <Accordion itemClasses={itemClasses} isCompact>
-                                <AccordionItem key={key} title={key} startContent={<VscSymbolArray />}>
-                                    <div className="flex flex-row gap-2">
+                                <AccordionItem key={key} title={key} classNames={{"trigger": "flex-row-reverse gap-2", "content": "p-0"}} indicator={({isOpen}) => <ArrayIndicator isOpen={isOpen} />} disableIndicatorAnimation>
+                                    <div className="flex flex-row gap-2 px-[7px]">
                                         <div className="border-[0.5px] border-neutral-400"/>
                                         <div>
                                             {renderAccordion(value)}
@@ -48,13 +49,13 @@ export default function Viewer(props: {object: any}) {
                         )
                     }
                 case "number":
-                    return <span className="flex items-center gap-1 text-xs"><VscSymbolNumeric />{key + ": " + String(value)}</span>
+                    return <span className="p-2 flex items-center gap-2 text-xs"><VscSymbolNumeric className="text-default-400" size="16" />{key + ": " + String(value)}</span>
                 case "string":
-                    return <span className="flex items-center gap-1 text-xs"><VscSymbolKey />{key + ": " + String(value)}</span>
+                    return <span className="p-2 flex items-center gap-2 text-xs"><VscSymbolKey className="text-default-400" size="16" />{key + ": " + String(value)}</span>
                 case "boolean":
-                    return <span className="flex items-center gap-1 text-xs"><VscSymbolBoolean />{key + ": " + String(value)}</span>
+                    return <span className="p-2 flex items-center gap-2 text-xs"><VscSymbolBoolean className="text-default-400" size="16" />{key + ": " + String(value)}</span>
                 default:
-                    return <span className="text-xs">{key + ": " + String(value)}</span>
+                    return <span className="p-2 text-xs">{key + ": " + String(value)}</span>
             }
         });
     }

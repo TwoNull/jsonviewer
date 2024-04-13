@@ -25,7 +25,7 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen mx-auto max-w-screen-xl p-16">
+        <main className="min-h-screen mx-auto max-w-screen-xl p-8">
             <div>
                 <Tabs onSelectionChange={changeSelection} selectedKey={selected}>
                     <Tab key="viewer" title="View">
