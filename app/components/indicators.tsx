@@ -1,6 +1,6 @@
 export function ArrayIndicator(props: {isOpen: boolean | undefined}) {
     return (
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 12" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <svg stroke="#2563eb" fill="#2563eb" stroke-width="0" viewBox="0 0 12 12" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.1,1.5L0.8,1.9v8.2l0.4,0.4H3V9.8H1.5V2.2H3V1.5H1.1z M10.9,10.5l0.4-0.4V1.9l-0.4-0.4H9v0.8h1.5v7.5H9v0.8H10.9z" />
             <rect fill-rule="evenodd" clip-rule="evenodd" x="3" y="5.6" width="6" height="0.8"/>
             {props.isOpen ? <></> : <rect fill-rule="evenodd" clip-rule="evenodd" x="5.6" y="3" width="0.8" height="6"/>}
@@ -10,7 +10,7 @@ export function ArrayIndicator(props: {isOpen: boolean | undefined}) {
 
 export function ObjectIndicator(props: {isOpen: boolean | undefined}) {
     return (
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 12" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        <svg stroke="#2563eb" fill="#2563eb" stroke-width="0" viewBox="0 0 12 12" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4,2.2V1.5H3.3c-0.2,0-0.5,0-0.7,0.1C2.4,1.7,2.2,1.9,2,2C1.9,2.2,1.8,2.4,1.7,2.6v0C1.6,2.8,1.6,3,1.5,3.2v0
                 c0,0.2,0,0.4,0,0.6c0,0.2,0,0.4,0,0.7c0,0.2,0,0.3-0.1,0.4v0C1.3,5.2,1.1,5.4,0.9,5.5C0.7,5.6,0.6,5.6,0.4,5.6H0.4v0.7h0.1
                 c0.1,0,0.3,0,0.4,0.1l0,0C1,6.5,1.1,6.6,1.2,6.7l0,0C1.3,6.8,1.4,6.9,1.4,7l0,0c0.1,0.1,0.1,0.3,0.1,0.4c0,0.2,0,0.4,0,0.7
